@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
-    var g1 = new ScatterGraph("뾰잉");
+    var testData = new TestData(mockupColumnNames, mockupData, 21);
+
+    var g1 = new ScatterGraph("divGraphs", testData, 0, 1);
     g1.draw();
 });
