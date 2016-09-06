@@ -76,9 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fds.html" />
+    <Content Include="scripts\graph_3d.js" />
     <Content Include="scripts\mockup_data.js" />
-    <Content Include="scripts\scatter_graph.js" />
-    <Content Include="scripts\test_data.js" />
+    <Content Include="scripts\graph_2d.js" />
+    <Content Include="scripts\graph_data.js" />
     <Content Include="scripts\main.js" />
     <Content Include="index.html" />
     <Content Include="lib\bootstrap.min.css" />

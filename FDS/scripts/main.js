@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    var testData = new TestData(mockupColumnNames, mockupData, 20);
+    var graphData = new GraphData(mockupColumnNames, mockupData, 20);
 
-    var g1 = new ScatterGraph("divGraphs", testData, 4, 1);
+    var g1 = new Graph3D("divGraphs", graphData, 0, 1);
     g1.draw();
 });

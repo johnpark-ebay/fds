@@ -1,4 +1,4 @@
-function TestData(colNameArr, rowData, classColIndex) {
+function GraphData(colNameArr, rowData, classColIndex) {
     this.colNameArr = colNameArr;
     this.colNum = colNameArr.length;
     this.rowData = rowData;
@@ -6,16 +6,16 @@ function TestData(colNameArr, rowData, classColIndex) {
 
     this.classArr = undefined;
     this.classNum = undefined;
-    this.columnData = undefined;
+    this.columnDataForEachClass = undefined;
 
     this.setcolumnData(classColIndex);
 }
 
-TestData.prototype.setcolumnData = function (classColIndex) {
+GraphData.prototype.setcolumnData = function (classColIndex) {
     this.classArr = Array.from(new Set(mockupData.map(row => row[classColIndex])));
     this.classNum = this.classArr.length;
 
-    this.columnData = [];
+    this.columnDataForEachClass = [];
     for (var i = 0; i < this.classNum; i++) {
         var rows = mockupData.filter(row => row[classColIndex] == this.classArr[i]);
 
@@ -23,6 +23,6 @@ TestData.prototype.setcolumnData = function (classColIndex) {
         for (var j = 0; j < this.colNum; j++) {
             currentClassColumnArr.push(rows.map(row=>row[j]));
         }
-        this.columnData.push(currentClassColumnArr);
+        this.columnDataForEachClass.push(currentClassColumnArr);
     }
 }
