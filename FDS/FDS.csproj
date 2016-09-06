@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fds.html" />
+    <Content Include="scripts\scatter_graph.js" />
+    <Content Include="scripts\test_data.js" />
     <Content Include="scripts\main.js" />
     <Content Include="index.html" />
     <Content Include="lib\bootstrap.min.css" />
