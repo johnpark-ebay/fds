@@ -17,7 +17,15 @@
     }
 
     this.layout = {
-        title: "[X]" + data.colNameArr[xColIndex] + " - [Y]" + data.colNameArr[yColIndex]
+        title: "[X]" + data.colNameArr[xColIndex] + " - [Y]" + data.colNameArr[yColIndex],
+        xaxis: {
+            title: data.colNameArr[xColIndex],
+            zeroline: false
+        },
+        yaxis: {
+            title: data.colNameArr[yColIndex],
+            zeroline: false
+        }
     };
 }
 
