@@ -2,22 +2,22 @@
     this.divId = divId;
 
     this.graphData = [];
-    for (var i = 0; i < data.classArr.length; i++) {
+    for (var i = 0; i < data.classNum; i++) {
         var classData = {
-            x: data.columnData[xColIndex],
-            y: data.columnData[yColIndex],
+            x: data.columnData[i][xColIndex],
+            y: data.columnData[i][yColIndex],
             mode: 'markers',
             type: 'scatter',
             name: data.classArr[i],
             text: Array.from(Array(data.rowNum).keys()).map(x=>data.classArr[i] + '-' + ++x),
-            marker: { size: 12 }
+            marker: { size: 5 }
         };
 
-        graphData.push(classData);
+        this.graphData.push(classData);
     }
 
     this.layout = {
-        title: data.colNameArr[xColIndex] + " - " + data.colNameArr[yColIndex]
+        title: "[X]" + data.colNameArr[xColIndex] + " - [Y]" + data.colNameArr[yColIndex]
     };
 }
 
