@@ -27,19 +27,20 @@ function showColumnImportance(columnImportance) {
     $tbody.empty();
 
     for (var i = 0; i <= columnNames.length / 5; i++) {
-        var $tr = $tbody.append("<tr></tr>");
+        $tbody.append("<tr></tr>");
+        var $lastTr = $tbody.children().last();
 
         if (i == 0) {
             for (var j = 0; j < 5 && j < columnNames.length ; j++) {
-                $tr.append("<td>" + columnNames[j] + "</td>");
-                $tr.append("<td>" + columnImportance[j] + "</td>");
+                $lastTr.append("<td>" + columnNames[j] + "</td>");
+                $lastTr.append("<td>" + columnImportance[j] + "</td>");
             }
         }
         else {
             for (var colIndex = i * 5; colIndex < (i + 1) * 5 && colIndex <= columnNames.length ; colIndex++) {
                 if (columnImportance[colIndex] != undefined) {
-                    $tr.append("<td>" + columnNames[colIndex] + "</td>");
-                    $tr.append("<td>" + columnImportance[colIndex] + "</td>");
+                    $lastTr.append("<td>" + columnNames[colIndex] + "</td>");
+                    $lastTr.append("<td>" + columnImportance[colIndex] + "</td>");
                 }
             }
         }
