@@ -16,7 +16,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h4>Options</h4></div>
         <div class="panel-body">
-            <div class="btn-group" data-toggle="buttons">
+            <div id="div_classifier" class="btn-group" data-toggle="buttons">
                 <label id="selector_rules" class="btn btn-default">
                     <input type="radio" name="selector" autocomplete="off">FDS Rules
                 </label>
@@ -35,7 +35,7 @@
             <b>3차원 그래프 변환 - </b>
             값 종류가 &nbsp;<input type="text" id="input_dimensionThreashold" class="form-inline" style="width:20px" value="5" /> 개 이하인 경우 3차원 그래프로 변환
             <br /><br />
-            <button type="button" id="btn_search" class="btn btn-primary">조회</button>
+            <button type="button" id="btn_showGraph" class="btn btn-primary">Show Graphs</button>
         </div>
     </div>
 
@@ -64,24 +64,24 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h4>Graphs</h4></div>
+        <div class="panel-heading"><h4>Graphs - Top</h4></div>
         <div class="panel-body">
-            <div id="div_graphs"></div>    
+            <div id="div_graphs_top"></div>    
         </div>
     </div>
 
-    <div id="divGraph1" style="float: left; width: 480px; height: 480px;"></div>
-    <div id="divGraph2" style="float: left; width: 480px; height: 480px;"></div>
-    <div id="divGraph3" style="float: left; width: 480px; height: 480px;"></div>
-    <div id="divGraph4" style="float: left; width: 480px; height: 480px;"></div>
-    <div id="divGraph5" style="float: left; width: 480px; height: 480px;"></div>
-    <div id="divGraph6" style="float: left; width: 480px; height: 480px;"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Graphs - Bottom</h4></div>
+        <div class="panel-body">
+            <div id="div_graphs_bottom"></div>
+        </div>
+    </div>
 
     <script src="lib/jquery-3.1.0.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/plotly-latest.min.js"></script>
 
-    <script src="scripts/mockup_data.js"></script>
+    <script src="scripts/resource.js"></script>
     <script src="scripts/graph.js"></script>
 
     <script src="scripts/fds.js"></script>

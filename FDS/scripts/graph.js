@@ -1,23 +1,29 @@
-﻿function GraphData(colNameArr, rowData, classColIndex) {
+﻿function GraphData(colNameArr, resource, classColIndex) {
     this.colNameArr = colNameArr;
     this.colNum = colNameArr.length;
-    this.rowData = rowData;
-    this.rowNum = rowData.length;
+    this.rowData = resource;
+    this.rowNum = resource.length;
 
     this.classArr = undefined;
     this.classNum = undefined;
     this.columnDataForEachClass = undefined;
 
     this.setcolumnData(classColIndex);
+
+    this.typeNumArr = [];
+    for (var i = 0; i < this.colNum; i++) {
+        var columnSet = new Set(this.rowData.map(row => row[i]));
+        this.typeNumArr.push(columnSet.size);
+    }
 }
 
 GraphData.prototype.setcolumnData = function (classColIndex) {
-    this.classArr = Array.from(new Set(mockupData.map(row => row[classColIndex])));
+    this.classArr = Array.from(new Set(this.rowData.map(row => row[classColIndex])));
     this.classNum = this.classArr.length;
 
     this.columnDataForEachClass = [];
     for (var i = 0; i < this.classNum; i++) {
-        var rows = mockupData.filter(row => row[classColIndex] == this.classArr[i]);
+        var rows = this.rowData.filter(row => row[classColIndex] == this.classArr[i]);
 
         var currentClassColumnArr = [];
         for (var j = 0; j < this.colNum; j++) {
@@ -27,8 +33,10 @@ GraphData.prototype.setcolumnData = function (classColIndex) {
     }
 }
 
-function Graph2D(divId, data, xColIndex, yColIndex) {
+function Graph2D(divId, data, colIndexArr) {
     this.divId = divId;
+    var xColIndex = colIndexArr[0];
+    var yColIndex = colIndexArr[1];
 
     this.graphData = [];
     for (var i = 0; i < data.classNum; i++) {
@@ -62,8 +70,10 @@ Graph2D.prototype.draw = function () {
     Plotly.newPlot(this.divId, this.graphData, this.layout);
 }
 
-function Graph3D(divId, data, xColIndex, yColIndex) {
+function Graph3D(divId, data, colIndexArr) {
     this.divId = divId;
+    var xColIndex = colIndexArr[0];
+    var yColIndex = colIndexArr[1];
 
     this.graphData = [];
     for (var i = 0; i < data.classNum; i++) {

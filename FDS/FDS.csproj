@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\bootstrap.min.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -77,11 +78,8 @@
   <ItemGroup>
     <Content Include="fds.html" />
     <Content Include="scripts\graph.js" />
-    <Content Include="scripts\graph_3d.js" />
-    <Content Include="scripts\mockup_data.js" />
-    <Content Include="scripts\graph_2d.js" />
-    <Content Include="scripts\graph_data.js" />
-    <Content Include="scripts\main.js" />
+    <Content Include="scripts\resource.js" />
+    <Content Include="scripts\fds.js" />
     <Content Include="index.html" />
     <Content Include="lib\bootstrap.min.css" />
     <Content Include="lib\jquery-3.1.0.min.js" />
