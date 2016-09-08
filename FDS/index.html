@@ -1,10 +1,90 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-    <title></title>
-	<meta charset="utf-8" />
+    <title>FDS - 2016 Hackathon</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
 </head>
-<body>
-    go to /fds.html
+
+<body style="padding:10px">
+    <div>
+        <h1>&nbsp;&nbsp;[FDS] Data Visualizer</h1>
+        <br />
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Options</h4></div>
+        <div class="panel-body">
+            <div id="div_classifier" class="btn-group" data-toggle="buttons">
+                <label id="selector_rules" class="btn btn-default">
+                    <input type="radio" name="selector" autocomplete="off">FDS Rules
+                </label>
+                <label id="selector_human" class="btn btn-default">
+                    <input type="radio" name="selector" autocomplete="off">Human
+                </label>
+                <label id="selector_machine" class="btn btn-default">
+                    <input type="radio" name="selector" autocomplete="off">Machine
+                </label>
+            </div>
+            <br /><br />
+            <b>조회 개수 - </b>
+            Top &nbsp;<input type="text" id="input_selectTopNum" class="form-inline" style="width:20px" value="6" /> 개, 
+            Bottom &nbsp;<input type="text" id="input_selectBottomNum" class="form-inline" style="width:20px" value="6" /> 개
+            <br /><br />
+            <b>3차원 그래프 변환 - </b>
+            값 종류가 &nbsp;<input type="text" id="input_dimensionThreashold" class="form-inline" style="width:20px" value="5" /> 개 이하인 경우 3차원 그래프로 변환(분류 결과를 z축으로 추가)
+            <br /><br />
+            <button type="button" id="btn_showGraph" class="btn btn-primary">Show Graphs</button>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Columns</h4></div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Column</td>
+                        <td>Importance</td>
+                        <td>Column</td>
+                        <td>Importance</td>
+                        <td>Column</td>
+                        <td>Importance</td>
+                        <td>Column</td>
+                        <td>Importance</td>
+                        <td>Column</td>
+                        <td>Importance</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody_colums">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Graphs - Top</h4></div>
+        <div class="panel-body">
+            <div id="div_graphs_top"></div>    
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Graphs - Bottom</h4></div>
+        <div class="panel-body">
+            <div id="div_graphs_bottom"></div>
+        </div>
+    </div>
+
+    <script src="lib/jquery-3.1.0.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/plotly-latest.min.js"></script>
+
+    <script src="scripts/resource.js"></script>
+    <script src="scripts/graph.js"></script>
+
+    <script src="scripts/fds.js"></script>
 </body>
+
 </html>

@@ -76,11 +76,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fds.html" />
+    <Content Include="index.html" />
     <Content Include="scripts\graph.js" />
     <Content Include="scripts\resource.js" />
     <Content Include="scripts\fds.js" />
-    <Content Include="index.html" />
     <Content Include="lib\bootstrap.min.css" />
     <Content Include="lib\jquery-3.1.0.min.js" />
     <Content Include="lib\plotly-latest.min.js" />
