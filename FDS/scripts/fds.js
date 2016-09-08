@@ -1,6 +1,6 @@
 ﻿var columnNames = ["Status of checking account", "Duration in months", "Credit history", "Purpose", "Credit amount", "Savings account/bond", "Present employment since", "Installment rate in percentage of disposable income", "Personal status and sex", "Other debtors/guarantors", "Present residence since", "Property", "Age in years", "Other installment plans", "Housing", "Number of existing credits at this bank", "Job", "Number of people being liable to provide maintenance for", "Telephone", "Foreign worker", "Credit risk"];
 
-var columnImportanceByRule = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+var columnImportanceByRule = [0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 18];
 var columnImportanceByHuman = [0, 18, 2, 3, 19, 6, 7, 10, 9, 11, 12, 5, 1, 14, 8, 15, 16, 17, 4, 13];
 var columnImportanceByMachine = [19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
@@ -74,7 +74,7 @@ function showGraphs() {
     var topPairs = getImportantPairs(columnImportance, topNum);
     $('#div_graphs_top').empty();
 
-    for (var i = 0; i < topNum; i++) {
+    for (var i = 0; i < topPairs.length; i++) {
         var divId = "div_top_graph" + i;
         $('#div_graphs_top').append('<div id="' + divId + '" style="float: left; width: 480px; height: 480px;"></div>')
         if (graphData.typeNumArr[topPairs[i][0]] > dimensionThreashold && graphData.typeNumArr[topPairs[i][1]] > dimensionThreashold) {
@@ -88,7 +88,7 @@ function showGraphs() {
     var bottomPairs = getUnimportantPairs(columnImportance, bottomNum);
     $('#div_graphs_bottom').empty();
 
-    for (var i = 0; i < topNum; i++) {
+    for (var i = 0; i < bottomPairs.length; i++) {
         var divId = "div_bottom_graph" + i;
         $('#div_graphs_bottom').append('<div id="' + divId + '" style="float: left; width: 480px; height: 480px;"></div>')
         if (graphData.typeNumArr[bottomPairs[i][0]] > dimensionThreashold && graphData.typeNumArr[bottomPairs[i][1]] > dimensionThreashold) {
@@ -101,46 +101,40 @@ function showGraphs() {
 }
 
 function getImportantPairs(importanceArr, num) {
-    var min = Math.min.apply(null, importanceArr);
-    var max = Math.max.apply(null, importanceArr);
-    var cnt = 0;
     var result = [];
     var current = [];
 
-    for (var i = max; i >= min && cnt < num; i--) {
-        var index = importanceArr.indexOf(i);
+    var tempImportanceArr = importanceArr.slice();
+    var index = tempImportanceArr.indexOf(Math.max.apply(null, tempImportanceArr));
 
-        if (index != -1) {
-            current.push(index);
-            if (current.length == 2) {
-                result.push(current);
-                current = [];
-                cnt++;
-            }
+    while (index > -1 && tempImportanceArr[index] != -Infinity && result.length < num) {
+        current.push(index);
+        tempImportanceArr[index] = -Infinity;
+        if (current.length == 2) {
+            result.push(current);
+            current = [];
         }
+        index = tempImportanceArr.indexOf(Math.max.apply(null, tempImportanceArr));
     }
 
     return result;
 }
 
 function getUnimportantPairs(importanceArr, num) {
-    var min = Math.min.apply(null, importanceArr);
-    var max = Math.max.apply(null, importanceArr);
-    var cnt = 0;
     var result = [];
     var current = [];
 
-    for (var i = min; i <= max && cnt < num; i++) {
-        var index = importanceArr.indexOf(i);
+    var tempImportanceArr = importanceArr.slice();
+    var index = tempImportanceArr.indexOf(Math.min.apply(null, tempImportanceArr));
 
-        if (index != -1) {
-            current.push(index);
-            if (current.length == 2) {
-                result.push(current);
-                current = [];
-                cnt++;
-            }
+    while (index > -1 && tempImportanceArr[index] != Infinity && result.length < num) {
+        current.push(index);
+        tempImportanceArr[index] = Infinity;
+        if (current.length == 2) {
+            result.push(current);
+            current = [];
         }
+        index = tempImportanceArr.indexOf(Math.min.apply(null, tempImportanceArr));
     }
 
     return result;
