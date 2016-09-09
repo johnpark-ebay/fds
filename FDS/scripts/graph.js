@@ -57,7 +57,10 @@ function Graph2D(divId, data, colIndexArr) {
         title: "[X]" + data.colNameArr[xColIndex] + " - [Y]" + data.colNameArr[yColIndex],
         xaxis: {
             title: data.colNameArr[xColIndex],
-            zeroline: false
+            zeroline: false,
+            tickmode: "array",
+            tickvals: [0, 1, 2],
+            ticktext: ["168.103.83.23", "60.30.85.200", "211.34.63.230"]
         },
         yaxis: {
             title: data.colNameArr[yColIndex],

@@ -83,6 +83,7 @@
     <Content Include="lib\bootstrap.min.css" />
     <Content Include="lib\jquery-3.1.0.min.js" />
     <Content Include="lib\plotly-latest.min.js" />
+    <Content Include="scripts\resource2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
